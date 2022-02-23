@@ -1,0 +1,32 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 11-14-2021
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title={carName} icon-name="standard:travel_mode">
+      <template if:true={recordId}>
+        <lightning-button-icon icon-name="utility:expand_alt" slot="actions" onclick={handleNavigateToRecord}></lightning-button-icon>
+        <div class="slds-m-horizontal_medium">
+          <div class="slds-p-vertical_medium">
+            <img src={carPictureUrl} alt="Car Picture"/>
+          </div>
+          <lightning-record-view-form onload={handleRecordLoaded} record-id={recordId} object-api-name="Car__c" density="compact">
+            <lightning-output-field field-name={categoryField}></lightning-output-field>
+            <lightning-output-field field-name={makeField}></lightning-output-field>
+            <lightning-output-field field-name={mrspField}></lightning-output-field>
+            <section>Other Features</section>
+            <lightning-output-field field-name={fuelField}></lightning-output-field>
+            <lightning-output-field field-name={seatsField}></lightning-output-field>
+            <br>
+            <lightning-output-field field-name={controlField}></lightning-output-field>
+          </lightning-record-view-form>
+        </div>
+      </template> 
+      <template if:false={recordId}>
+        <c-place-holder message="Select a Car to see Details..!"></c-place-holder>
+      </template>
+    </lightning-card> 
+</template>
